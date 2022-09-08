@@ -14,7 +14,7 @@ const Navbar = () => {
     >
         <MenuToggle/>
         <Link to="/" >
-            <img src={logo} alt="logo" height={65} width={100}/>
+            <img src={logo} alt="logo" height={55} />
         </Link>
         <Searchbar/>
     </Stack>

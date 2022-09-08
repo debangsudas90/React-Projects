@@ -1,8 +1,13 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
+import { Box, Stack, Typography } from '@mui/material'
 
 const Feed = () => {
   return (
-    <div>Feed</div>
+    <Box minHeight='95vh'>
+      <Stack>
+        hello
+      </Stack>
+    </Box>
   )
 }
 

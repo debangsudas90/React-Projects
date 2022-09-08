@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
-export default function PositionedMenu() {
+export default function BasicMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -16,33 +16,27 @@ export default function PositionedMenu() {
   return (
     <div>
       <Button
-        id="demo-positioned-button"
-        aria-controls={open ? 'demo-positioned-menu' : undefined}
+        id="basic-button"
+        aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
-        sx={{color: "#fff"}}
+        sx={{ color: '#f22f2f' }}
       >
         Genre
       </Button>
       <Menu
-        id="demo-positioned-menu"
-        aria-labelledby="demo-positioned-button"
+        id="basic-menu"
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
         }}
       >
         <MenuItem onClick={handleClose}>Action</MenuItem>
+        <MenuItem onClick={handleClose}>Adventure</MenuItem>
         <MenuItem onClick={handleClose}>Fantasy</MenuItem>
-        <MenuItem onClick={handleClose}>Isekai</MenuItem>
       </Menu>
     </div>
   );
