@@ -1,11 +1,68 @@
 import { useState, useEffect } from 'react'
-import { Box, Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography, Button } from '@mui/material'
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+
+import { Videos } from './'
+import { fetchFromApi } from '../utils/fetchFromApi';
 
 const Feed = () => {
+  const arr = ["action", "adventure"]
+
+  const [videos, setVideos] = useState([])
+
+  useEffect(() => {
+    fetchFromApi(`recent-release?type=1&page=1`)
+      .then((data) => setVideos(data))
+  }, [])
+  
+
   return (
     <Box minHeight='95vh'>
-      <Stack>
-        hello
+      {/* top bar */}
+      <Stack direction="row" justifyContent = "space-around" width="100%">
+        <Stack direction = "column" gap={3} justifyContent = "center" sx={{color: "#fff"}}>
+          {/* title */}
+          <Typography variant="h4">
+            Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e (TV) 2nd Season
+          </Typography>
+          {/* genre */}
+          <Stack direction="row" gap={2}>
+            {arr.map((genre) => (
+              <Button variant="outlined">
+                {genre}
+              </Button>
+            ))}
+          </Stack>
+          <Button size="large" color="error" variant="contained">
+            Play
+          <PlayArrowIcon sx={{ fontSize:20, color: 'white', ml:'5px' }}/>
+          </Button>
+        </Stack>
+        <img src="https://gogocdn.net/cover/youkoso-jitsuryoku-shijou-shugi-no-kyoushitsu-e-tv-2nd-season.png" alt="ypoukoso" height="360" style={{borderRadius:10}}/>
+      </Stack>
+
+
+
+
+      {/* recent episodes */}
+      <Stack direction="row" mt = {6} justifyContent = "space-between">
+        <Box p={2} sx={{ overflowY: 'auto', height : '90vh', flex: 2 }}>
+          <Typography variant='h4' fontWeight='bold' mb={2}  sx={{color:'white'}}>
+            Recent <span style={{ color: '#F31503' }}>Episodes</span>
+          </Typography>
+
+          <Videos videos={videos}/>
+        </Box>
+
+
+
+        {/* popular anime   */}
+        <Box px={2} py={1} justifyContent="center" alignItems="center">
+          <Typography variant='h4' fontWeight='bold' mb={2}  sx={{color:'white'}}>
+              Most <span style={{ color: '#F31503' }}>Popular</span>
+          </Typography>
+        <Videos videos={videos} direction="column"/>
+      </Box>
       </Stack>
     </Box>
   )
