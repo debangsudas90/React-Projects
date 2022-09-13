@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Box, Stack, Typography, Button } from '@mui/material'
+import ReactPlayer from 'react-player'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 import { Videos } from './'
@@ -46,14 +47,18 @@ const Feed = () => {
 
       {/* recent episodes */}
       <Stack direction="row" mt = {6} justifyContent = "space-between">
-        <Box p={2} sx={{ overflowY: 'auto', height : '90vh', flex: 2 }}>
+        <Box p={2} sx={{ overflowY: 'auto', flex: 2 }}>
           <Typography variant='h4' fontWeight='bold' mb={2}  sx={{color:'white'}}>
             Recent <span style={{ color: '#F31503' }}>Episodes</span>
           </Typography>
 
           <Videos videos={videos}/>
-        </Box>
 
+          {/* fucken remember this shit */}
+
+          {/* <ReactPlayer url="https://wwwx17.gogocdn.stream/videos/hls/e7qIiO51ci_SV35PLJamMw/1663113940/190856/ca09dc1ce88568467994ea8e756c4493/ep.8.1661270369.m3u8" className="react-player" controls/> */}
+        </Box>
+            
 
 
         {/* popular anime   */}
@@ -61,6 +66,7 @@ const Feed = () => {
           <Typography variant='h4' fontWeight='bold' mb={2}  sx={{color:'white'}}>
               Most <span style={{ color: '#F31503' }}>Popular</span>
           </Typography>
+          {/* change it */}
         <Videos videos={videos} direction="column"/>
       </Box>
       </Stack>
