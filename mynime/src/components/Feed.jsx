@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { Box, Stack, Typography, Button } from '@mui/material'
-import ReactPlayer from 'react-player'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 import { Videos } from './'
@@ -13,7 +12,7 @@ const Feed = () => {
 
   useEffect(() => {
     fetchFromApi(`recent-release?type=1&page=1`)
-      .then((data) => setVideos(data))
+      .then((data) => setVideos(data.slice(0,18)))
   }, [])
   
 
