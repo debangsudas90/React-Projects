@@ -16,7 +16,7 @@ const VideoCard = ({ video }) => {
       </Link>
       <CardContent sx={{ backgroundColor: '#1e1e1e', height: '40px'}}>
         {/* change */}
-        <Link to="#">
+        <Link to={video.animeId ? `/anime-details/${video.animeId}` : null}>
           <Typography noWrap variant="subtitle1" fontWeight="bold" color="#fff">
             {video?.animeTitle.length > 15 ? video?.animeTitle.slice(0,15)+"..." :
             video?.animeTitle}
