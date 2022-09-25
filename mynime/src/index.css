@@ -62,6 +62,10 @@ a {
   transition: all 0.3s ease;
 }
 
+.active {
+  background-color: #FC1503;
+}
+
 /* @media screen and (max-width: 900px) {
   .category-btn{
     margin: 10px;
