@@ -26,10 +26,7 @@ const Feed = () => {
         </Typography>
 
         <Videos videos={videos}/>
-
-        {/* fucken remember this shit */}
-
-        {/* <ReactPlayer url="https://cache.387e6278d8e06083d813358762e0ac63.com/222868881917.m3u8" className="react-player" controls/> */}
+        
       </Stack>
     
     </Box>

@@ -1,24 +1,15 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { Box, Stack, Typography, Button, List, ListItem, ListItemText } from '@mui/material'
-import ReactPlayer from 'react-player'
+import { useParams, Link } from 'react-router-dom'
+import { Box, Stack, Typography, Button } from '@mui/material'
 
 import { fetchFromApi } from '../utils/fetchFromApi'
 
 const AnimeDetails = () => {
 
   const [anime, setAnime] = useState([])
-  const [animeVid, setAnimeVid] = useState([])
-  const [epiId, setEpiId] = useState("")
   const [isActive, setIsActive] = useState(false)
 
   const { id } = useParams()
-  let { animeId } = useParams()
-
-  const loadEpisode = (episodeNum) => {
-    console.log(episodeNum)
-    setEpiId(episodeNum)
-  }
 
   const handleActive = event => {
     console.log(isActive)
@@ -32,13 +23,6 @@ const AnimeDetails = () => {
       }) 
   }, [id])
 
-  useEffect(() => {
-    fetchFromApi(`vidcdn/watch/${epiId}`)
-      .then((data) => {
-        setAnimeVid(data)
-        console.log(data)
-      }) 
-  }, [epiId])
 
   return (
     <Box minHeight="95vh">
@@ -85,30 +69,35 @@ const AnimeDetails = () => {
           </Stack>
 
 
-        {/* episode list and watch */}
+        {/* episode list */}
 
-        <Stack p={9} sx={{ overflowY: 'auto' }}>
+        <Stack p={9} sx={{ overflowY: 'auto' }} >
           <Typography variant='h4' fontWeight='bold' mb={2}  sx={{color:'white'}}>
             <span style={{ color: '#F31503' }}>Episodes</span> List
           </Typography>
 
-          <Stack direction="row">
-            <Box sx={{color: '#fff', backgroundColor: '#212121', borderRadius:"10px"}}>
-              <List sx={{maxHeight: 545, width: 100, overflow: 'auto'}}>
-                {anime?.episodesList?.slice(0).reverse().map(episode => (
-                <ListItem
-                  button
-                  key = {episode?.episodeId}
-                  className = {isActive ? 'active' : ""}
-                  onClick = {handleActive}
-                >
-                  <ListItemText primary = {`EP - ${episode?.episodeNum}`} onClick = {() => loadEpisode(episode?.episodeId)}/>
-                </ListItem>
-                ))}
-              </List>
-            </Box>
-            <ReactPlayer url={`${animeVid?.sources?.[0]?.file}`} className="react-player" controls/>
+          
+            
+          <Stack direction = "row" gap={2} flexWrap="wrap">
+            {anime?.episodesList?.slice(0).reverse().map(episode => (
+            <Link to={`/vidcdn/watch/${episode?.episodeId}`}>
+            <Button
+              size = "large"
+              color = "error"
+              variant = "contained"
+              key = {episode?.episodeId}
+              className = {isActive ? 'active' : ""}
+              onClick = {handleActive}
+              sx = {{width: '130px'}}
+            >
+              {`EP - ${episode?.episodeNum}`}
+            </Button>
+            </Link>
+            ))}
           </Stack>
+            
+            {/* <ReactPlayer url={`${animeVid?.sources?.[0]?.file}`} className="react-player" controls/> */}
+          
         </Stack>
       </Box>
     </Box>
