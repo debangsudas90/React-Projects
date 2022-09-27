@@ -7,14 +7,8 @@ import { fetchFromApi } from '../utils/fetchFromApi'
 const AnimeDetails = () => {
 
   const [anime, setAnime] = useState([])
-  const [isActive, setIsActive] = useState(false)
 
   const { id } = useParams()
-
-  const handleActive = event => {
-    console.log(isActive)
-    setIsActive(current => !current)
-  }
   
   useEffect(() => {
     fetchFromApi(`anime-details/${id}`)
@@ -34,7 +28,7 @@ const AnimeDetails = () => {
         height: '270px'
       }}
         />
-        <Stack direction="row" justifyContent = "space-evenly" width="100%" mt = "25px">
+        <Stack direction="row" gap = {2}justifyContent = "space-evenly" width="100%" mt = "25px">
             <img src={anime.animeImg} alt={anime.animeTitle} height="340" style={{borderRadius:10}} />
 
             <Stack direction = "column" gap={2} justifyContent = "center" sx={{color: "#fff", width: '70vw'}}>
@@ -86,8 +80,6 @@ const AnimeDetails = () => {
               color = "error"
               variant = "contained"
               key = {episode?.episodeId}
-              className = {isActive ? 'active' : ""}
-              onClick = {handleActive}
               sx = {{width: '130px'}}
             >
               {`EP - ${episode?.episodeNum}`}
@@ -95,9 +87,6 @@ const AnimeDetails = () => {
             </Link>
             ))}
           </Stack>
-            
-            {/* <ReactPlayer url={`${animeVid?.sources?.[0]?.file}`} className="react-player" controls/> */}
-          
         </Stack>
       </Box>
     </Box>
