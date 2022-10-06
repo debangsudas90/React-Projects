@@ -10,7 +10,6 @@ const Videos = ({ videos }) => {
                 <VideoCard video={item}/>
             </Box>
         ))}
-        hello
     </Stack>
   )
 }
