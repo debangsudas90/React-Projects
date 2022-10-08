@@ -37,13 +37,16 @@ const Topbar = () => {
     const handleStepChange = (step) => {
         setActiveStep(step);
     };
+
   return (
     
-    <Box>
+    <Box sx={{flexGrow: 1}}>
     <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
         onChangeIndex={handleStepChange}
+        interval = {6000}
+        autoplay = {false}
         enableMouseEvents
     >
         {topAiring.map((list, index) => (

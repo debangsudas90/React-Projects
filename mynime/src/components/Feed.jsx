@@ -13,10 +13,10 @@ const Feed = () => {
       .then((data) => setVideos(data))
   }, [pageCount])
   
-  function handleCount() {
-    setPageCount(pageCount+1)
-    console.log(pageCount)
-  }
+  // function handleCount() {
+  //   setPageCount(pageCount+1)
+  //   console.log(pageCount)
+  // }
 
   return (
     <Box minHeight='95vh'>
