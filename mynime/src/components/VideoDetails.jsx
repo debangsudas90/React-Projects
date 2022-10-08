@@ -14,7 +14,7 @@ const VideoDetails = () => {
   
   const { animeId } = useParams()
   
-  const [episodeNum, setEpisodeNum] = useState(animeId.split("-episode-").pop())
+  const [episodeNum, setEpisodeNum] = useState(parseInt(animeId.split("-episode-").pop()))
   
   const animeDetailId = animeId.substring(0, animeId.indexOf("-episode"))
 
@@ -32,18 +32,26 @@ const VideoDetails = () => {
     }, [animeId])
 
     function handlePrevEpisode() {
-      console.log(" prev clicked")
+      setEpisodeNum(episodeNum-1)
     }
 
     function handleNextEpisode() {
-      console.log(" next clicked")
+      setEpisodeNum(episodeNum+1)
     }
     
     return (
       <Box minHeight = "95vh">
+
+        {/* video player */}
         <Stack direction = "row" justifyContent="space-evenly">
-          <Button>
-            <ArrowBackIosNewIcon className = "episode-switch-icon" onClick={handlePrevEpisode}/>
+          
+          <Button 
+            onClick={handlePrevEpisode}
+            disabled={episodeNum === 1 ? true : false}
+          >
+            <Link to = {`/vidcdn/watch/${animeDetailId}-episode-${episodeNum-1}`}>
+              <ArrowBackIosNewIcon className = "episode-switch-icon"/>
+            </Link>
           </Button>
 
           <ReactPlayer 
@@ -51,9 +59,16 @@ const VideoDetails = () => {
             className="react-player" 
             controls
           />
-          <Button>
-            <ArrowForwardIosIcon className = "episode-switch-icon" onClick={handleNextEpisode}/>
+
+          <Button 
+            onClick={handleNextEpisode}
+            disabled={episodeNum === parseInt(animeDetails?.totalEpisodes) ? true : false}
+          >
+            <Link to = {`/vidcdn/watch/${animeDetailId}-episode-${episodeNum+1}`}>
+              <ArrowForwardIosIcon className = "episode-switch-icon"/>
+            </Link>
           </Button>
+
         </Stack>
 
 

@@ -58,8 +58,10 @@ const Topbar = () => {
                     </Typography>
                     {/* genre */}
                     <Stack direction="row" gap={2}>
-                        {list.genres.map((genre) => (
-                            <Button variant="outlined">
+                        {list.genres.map((genre,idx) => (
+                            <Button                         variant="outlined"
+                                key={idx}
+                            >
                             {genre}
                             </Button>
                         ))}

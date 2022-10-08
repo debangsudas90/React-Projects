@@ -73,17 +73,17 @@ const AnimeDetails = () => {
           
             
           <Stack direction = "row" gap={2} flexWrap="wrap">
-            {anime?.episodesList?.slice(0).reverse().map(episode => (
-            <Link to={`/vidcdn/watch/${episode?.episodeId}`}>
-            <Button
-              size = "large"
-              color = "error"
-              variant = "contained"
-              key = {episode?.episodeId}
-              sx = {{width: '130px'}}
-            >
-              {`EP - ${episode?.episodeNum}`}
-            </Button>
+            {anime?.episodesList?.slice(0).reverse().map((episode,idx) => (
+            <Link to={`/vidcdn/watch/${episode?.episodeId}`} key={idx}>
+              <Button
+                size = "large"
+                color = "error"
+                variant = "contained"
+                key = {idx}
+                sx = {{width: '130px'}}
+              >
+                {`EP - ${episode?.episodeNum}`}
+              </Button>
             </Link>
             ))}
           </Stack>
