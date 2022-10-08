@@ -39,14 +39,18 @@ const Topbar = () => {
     };
 
   return (
+
+    // material-ui-carousel
     
     <Box sx={{flexGrow: 1}}>
     <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
+        containerStyle={{
+            transition: 'transform 0.35s cubic-bezier(0.15, 0.3, 0.25, 1) 0s'
+        }}
         onChangeIndex={handleStepChange}
-        interval = {6000}
-        autoplay = {false}
+        interval = {5000}
         enableMouseEvents
     >
         {topAiring.map((list, index) => (
@@ -62,7 +66,7 @@ const Topbar = () => {
                     {/* genre */}
                     <Stack direction="row" gap={2}>
                         {list.genres.map((genre,idx) => (
-                            <Button                         variant="outlined"
+                            <Button                        variant="outlined"
                                 key={idx}
                             >
                             {genre}
