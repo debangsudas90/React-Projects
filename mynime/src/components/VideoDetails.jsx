@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { Box, Stack, Typography, Button } from '@mui/material'
+import { Box, Stack, Typography, Button, Tooltip } from '@mui/material'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import ReactPlayer from 'react-player'
@@ -50,7 +50,9 @@ const VideoDetails = () => {
             disabled={episodeNum === 1 ? true : false}
           >
             <Link to = {`/vidcdn/watch/${animeDetailId}-episode-${episodeNum-1}`}>
-              <ArrowBackIosNewIcon className = "episode-switch-icon"/>
+              <Tooltip title="Previous Episode">
+                <ArrowBackIosNewIcon className = "episode-switch-icon"/>
+              </Tooltip>
             </Link>
           </Button>
 
@@ -65,7 +67,9 @@ const VideoDetails = () => {
             disabled={episodeNum === parseInt(animeDetails?.totalEpisodes) ? true : false}
           >
             <Link to = {`/vidcdn/watch/${animeDetailId}-episode-${episodeNum+1}`}>
-              <ArrowForwardIosIcon className = "episode-switch-icon"/>
+              <Tooltip title="Next Episode">
+                <ArrowForwardIosIcon className = "episode-switch-icon"/>
+              </Tooltip>
             </Link>
           </Button>
 

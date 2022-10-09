@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Card, CardMedia, CardContent, Typography } from "@mui/material"
+import { Card, CardMedia, CardContent, Typography, Tooltip } from "@mui/material"
 
 const VideoCard = ({ video }) => {
   // console.log(video)
@@ -20,15 +20,17 @@ const VideoCard = ({ video }) => {
 
       <CardContent sx={{ backgroundColor: '#1e1e1e', height: 'auto'}}>
 
-        <Link to={video?.animeId ? `/anime-details/${video.animeId}` : null}>
-          <Typography noWrap variant="subtitle1" fontWeight="bold" color="#fff">
-            {video?.animeTitle.length > 15 ? video?.animeTitle.slice(0,17)+"..." :
-            video?.animeTitle}
-          </Typography>
+        <Link to={`/anime-details/${video?.animeId}`}>
+          <Tooltip title={video?.animeTitle}>
+            <Typography noWrap variant="subtitle1" fontWeight="bold" color="#fff">
+              {video?.animeTitle.length > 16 ? video?.animeTitle.slice(0,17)+"..." :
+              video?.animeTitle}
+            </Typography>
+          </Tooltip>
         </Link>
 
         {video.episodeId ? 
-          <Link to = {`/vidcdn/watch/${video.episodeId}`}>
+          <Link to = {`/vidcdn/watch/${video?.episodeId}`}>           
             <Typography noWrap variant="subtitle2" fontWeight="bold" color="gray">
               Episode {video?.episodeNum}
             </Typography>
