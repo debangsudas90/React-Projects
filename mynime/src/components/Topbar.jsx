@@ -50,7 +50,7 @@ const Topbar = () => {
             transition: 'transform 0.35s cubic-bezier(0.15, 0.3, 0.25, 1) 0s'
         }}
         onChangeIndex={handleStepChange}
-        interval = {5000}
+        interval = {6000}
         enableMouseEvents
     >
         {topAiring.map((list, index) => (
