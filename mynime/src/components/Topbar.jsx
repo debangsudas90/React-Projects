@@ -66,11 +66,13 @@ const Topbar = () => {
                     {/* genre */}
                     <Stack direction="row" gap={2}>
                         {list.genres.map((genre,idx) => (
-                            <Button                        variant="outlined"
-                                key={idx}
-                            >
-                            {genre}
-                            </Button>
+                            <Link to={`/genre/${genre.toLowerCase()}`}>
+                                <Button                        variant="outlined"
+                                    key={idx}
+                                >
+                                {genre}
+                                </Button>
+                            </Link>
                         ))}
                     </Stack>
                     <Link to = {list.animeId ? `/anime-details/${list.animeId}` : null}>
