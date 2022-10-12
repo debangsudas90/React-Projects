@@ -22,7 +22,7 @@ const VideoCard = ({ video }) => {
 
         <Link to={`/anime-details/${video?.animeId}`}>
           <Tooltip title={video?.animeTitle}>
-            <Typography noWrap variant="subtitle1" fontWeight="bold" color="#fff">
+            <Typography variant="subtitle1" fontWeight="bold" color="#fff">
               {video?.animeTitle.length > 16 ? video?.animeTitle.slice(0,17)+"..." :
               video?.animeTitle}
             </Typography>

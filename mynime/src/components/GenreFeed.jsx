@@ -1,17 +1,21 @@
 import { useState, useEffect } from 'react'
-import { Box, Stack, Typography, LinearProgress } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 import { Videos,Topbar } from './'
 import { fetchFromApi } from '../utils/fetchFromApi';
+import { useParams } from 'react-router-dom';
 
-const Feed = () => {
+const GenreFeed = () => {
 
   const [videos, setVideos] = useState([])
   const [pageCount, setPageCount] = useState(1)
 
+  const { category } = useParams()
+  console.log(category)
+
   useEffect(() => {
-    fetchFromApi(`recent-release?type=1&page=${pageCount}`)
+    fetchFromApi(`genre/${category}?page=${pageCount}`)
       .then((data) => setVideos(data))
-  }, [pageCount])
+  }, [category, pageCount])
   
   // function handleCount() {
   //   setPageCount(pageCount+1)
@@ -21,12 +25,10 @@ const Feed = () => {
   return (
     <Box minHeight='95vh'>
       
-      <Topbar/>
-
-      {/* recent episodes */}
-      <Stack p={2} mt={6} sx={{ overflowY: 'auto' }}>
+      {/* search results */}
+      <Stack p={2} mt={3} sx={{ overflowY: 'auto' }}>
         <Typography variant='h4' fontWeight='bold' mb={2}  sx={{color:'white'}}>
-          Recent <span style={{ color: '#F31503' }}>Episodes</span>
+          Search Results for <span style={{ color: '#F31503' }}>{category}</span> anime
         </Typography>
 
         <Videos videos={videos}/>
@@ -46,6 +48,4 @@ const Feed = () => {
   )
 }
 
-export default Feed
-
-
+export default GenreFeed

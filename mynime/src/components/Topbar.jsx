@@ -42,7 +42,7 @@ const Topbar = () => {
 
     // material-ui-carousel
     
-    <Box sx={{flexGrow: 1}}>
+    <Box sx={{flexGrow: 1, pt: 2}}>
     <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}

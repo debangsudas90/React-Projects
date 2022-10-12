@@ -1,43 +1,66 @@
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { Drawer,Box, Typography, IconButton, Stack } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu'
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+
+import { categories } from '../utils/constants'
 
 export default function BasicMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const [selectedGenre, setSelectedGenre] = useState("")
 
   return (
     <div>
-      <Button
-        id="basic-button"
-        aria-controls={open ? 'basic-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-        sx={{ color: '#f22f2f' }}
+      <IconButton 
+        size='large' 
+        edge='start'  
+        aria-label='logo'
+        sx = {{color: 'white'}}
+        onClick={() => setIsDrawerOpen(true)}
       >
-        Genre
-      </Button>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
+        <MenuIcon />
+      </IconButton>
+      <Drawer 
+        anchor='top' 
+        open={isDrawerOpen}
+        PaperProps={{
+          sx: {
+            backgroundColor: "#000",
+            color: "#fff",
+          }
+        }} 
+        onClose={() => setIsDrawerOpen(false)}
       >
-        <MenuItem onClick={handleClose}>Action</MenuItem>
-        <MenuItem onClick={handleClose}>Adventure</MenuItem>
-        <MenuItem onClick={handleClose}>Fantasy</MenuItem>
-      </Menu>
+        <Box 
+          p={2}
+          textAlign='center'
+        >
+          <Typography variant='h5' fontWeight="bold" sx={{color: '#d32f2f'}}>
+            Genres
+          </Typography>
+
+          <Stack direction = "row" flexWrap = "wrap" justifyContent = "center" sx={{maxHeight: '50vh'}}>
+            
+            {categories.map((category) => (
+              <Link to={`/genre/${selectedGenre.toLocaleLowerCase()}`}>
+                <button 
+                  className='category-btn'
+                  onMouseEnter={() => setSelectedGenre(category.name)}
+                  style={{
+                    color:'white'
+                  }}
+                  key={category.name}  
+                >
+                  <span>{category.name}</span>
+                </button>
+              </Link>
+            ))}
+          </Stack>
+
+        </Box>
+      </Drawer>
     </div>
   );
 }
