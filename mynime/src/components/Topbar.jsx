@@ -19,7 +19,8 @@ const Topbar = () => {
 
     useEffect(() => {
         fetchFromApi(`top-airing?page=1`)
-            .then((data) => setTopAiring(data.slice(0,7)))
+            .then((data) => setTopAiring(data.slice(0,9)))
+        
     },[])
 
     const theme = useTheme();
@@ -42,10 +43,11 @@ const Topbar = () => {
 
     // material-ui-carousel
     
-    <Box sx={{flexGrow: 1, pt: 2}}>
+    <Box sx={{flexGrow: 1}}>
     <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
+        autoplay={false}
         containerStyle={{
             transition: 'transform 0.35s cubic-bezier(0.15, 0.3, 0.25, 1) 0s'
         }}
@@ -56,19 +58,34 @@ const Topbar = () => {
         {topAiring.map((list, index) => (
         <div key={list.animeId}>
             {Math.abs(activeStep - index) <= 2 ? (
-            <Stack direction="row" justifyContent = "space-evenly" width="100%">
-                <Stack direction = "column" gap={3} justifyContent = "center" sx={{color: "#fff", width: '70vw'}}>
+            <Stack 
+                direction="row" 
+                justifyContent = "space-between"
+                alignItems = "center"
+                gap={3}
+                sx={{background: "#0e0e0e",borderRadius: 5, mt: 2, pl: 3, overflow: 'hidden'}}
+            >
+                <Stack 
+                    direction = "column" 
+                    gap={3} 
+                    justifyContent = "center" 
+                    sx={{color: "#fff", width: '70vw'}}
+                >
                     {/* title */}
 
                     <Typography variant="h4">
                         {list.animeTitle}
                     </Typography>
                     {/* genre */}
-                    <Stack direction="row" gap={2}>
+                    <Stack direction="row"  flexWrap="wrap" gap={2} 
+                    sx={{display: {xs: 'none', sm: 'none', md: 'inherit', lg: 'inherit'}}}
+                    >
                         {list.genres.map((genre,idx) => (
                             <Link to={`/genre/${genre.toLowerCase()}`}>
-                                <Button                        variant="outlined"
+                                <Button 
+                                    variant="outlined"
                                     key={idx}
+                                    size="small"
                                 >
                                 {genre}
                                 </Button>
@@ -77,7 +94,7 @@ const Topbar = () => {
                     </Stack>
                     <Link to = {list.animeId ? `/anime-details/${list.animeId}` : null}>
                         <Button size="large" color="error" variant="contained"
-                        sx = {{display: 'flex', justifyContent: "center", width: '70vw'}}>
+                        sx = {{display: 'flex', justifyContent: "center", width: '65vw'}}>
                         Play
                         <PlayArrowIcon sx={{ fontSize:20, color: 'white', ml:'5px'}}/>
                         </Button>
@@ -93,7 +110,7 @@ const Topbar = () => {
         steps={maxSteps}
         position="static"
         activeStep={activeStep}
-        sx={{backgroundColor: '#000'}}
+        sx={{backgroundColor: '#0e0e0e'}}
         nextButton={
         <Button
             size="small"

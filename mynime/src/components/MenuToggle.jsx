@@ -31,7 +31,7 @@ export default function BasicMenu() {
             color: "#fff",
           }
         }} 
-        onClose={() => setIsDrawerOpen(false)}
+        onClick={() => setIsDrawerOpen(false)}
       >
         <Box 
           p={2}

@@ -19,7 +19,7 @@ const Feed = () => {
   // }
 
   return (
-    <Box minHeight='95vh'>
+    <Box minHeight='95vh' sx={{backgroundColor: "#0e0e0e", pl: 4, pr: 4}}>
       
       <Topbar/>
 
