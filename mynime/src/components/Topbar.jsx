@@ -95,10 +95,9 @@ const Topbar = () => {
                     sx={{
                         color: "#fff", width: '70vw',
                         borderRadius: "15px",
-                        pl: 1,
                         mt: {
-                            sm: "90px",
-                            xs: "90px",
+                            sm: "80px",
+                            xs: "80px",
                             md: "inherit",
                             lg: "inherit"
                         },
@@ -107,10 +106,18 @@ const Topbar = () => {
                 >
                     {/* title */}
 
-                    <Typography sx={{
+                    <Typography fontWeight = "bold" sx={{
                         typography: { 
                             sm: 'h5',
                             xs: 'h6'
+                        },
+                        p: {
+                            sm: 2,
+                            xs: 2
+                        },
+                        pb: {
+                            sm: 0,
+                            xs: 0
                         }
                     }}>
                         {list.animeTitle}
@@ -132,7 +139,7 @@ const Topbar = () => {
                         ))}
                     </Stack>
                     <Link to = {list.animeId ? `/anime-details/${list.animeId}` : null}>
-                        <Button size="large" color="error" variant="contained"
+                        <Button size="medium" color="error" variant="contained"
                         sx = {{display: 'flex', justifyContent: "center", width: '70vw'}}>
                         Watch Now
                         <PlayArrowIcon sx={{ fontSize:20, color: 'white', ml:'5px'}}/>

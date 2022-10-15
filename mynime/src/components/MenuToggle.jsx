@@ -9,7 +9,6 @@ import { categories } from '../utils/constants'
 export default function BasicMenu() {
   
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-  const [selectedGenre, setSelectedGenre] = useState("")
 
   return (
     <div>
@@ -44,10 +43,9 @@ export default function BasicMenu() {
           <Stack direction = "row" flexWrap = "wrap" justifyContent = "center" sx={{maxHeight: '50vh'}}>
             
             {categories.map((category) => (
-              <Link to={`/genre/${selectedGenre.toLocaleLowerCase()}`}>
+              <Link to={`/genre/${category?.name.toLocaleLowerCase()}`}>
                 <button 
                   className='category-btn'
-                  onMouseEnter={() => setSelectedGenre(category.name)}
                   style={{
                     color:'white'
                   }}

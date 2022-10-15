@@ -30,15 +30,6 @@ const Feed = () => {
         </Typography>
 
         <Videos pageCount={pageCount} changeVideos={setPageCount} videos={videos}/>
-
-
-        {/* load more recent ep */}
-        
-        {/* <Typography variant='h4' fontWeight='bold' mb={2}  sx={{color:'white'}}
-        onClick = {handleCount}
-        >
-          More...
-        </Typography> */}
         
       </Stack>
     
