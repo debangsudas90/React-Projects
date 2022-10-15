@@ -30,7 +30,7 @@ const SearchFeed = () => {
           Search Results for <span style={{ color: '#F31503' }}>{searchTerm}</span> anime
         </Typography>
 
-        <Videos videos={videos}/>
+        <Videos pageCount={pageCount} changeVideos={setPageCount} videos={videos}/>
 
 
         {/* load more recent ep */}

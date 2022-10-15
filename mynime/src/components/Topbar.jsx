@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Stack, Typography, Button, Box } from '@mui/material'
+import { Stack, Typography, Button, Box, Paper } from '@mui/material'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { useTheme } from '@mui/material/styles';
 import MobileStepper from '@mui/material/MobileStepper';
@@ -43,7 +43,7 @@ const Topbar = () => {
 
     // material-ui-carousel
     
-    <Box sx={{flexGrow: 1}}>
+    <Box sx={{flexGrow: 1, pl: 3, pr: 3}}>
     <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
@@ -58,22 +58,61 @@ const Topbar = () => {
         {topAiring.map((list, index) => (
         <div key={list.animeId}>
             {Math.abs(activeStep - index) <= 2 ? (
+            <Paper 
+                sx={{
+                    minHeight: {
+                        sm: "45vh",
+                        xs: "45vh"
+                    },
+                    backgroundImage: {
+                        sm: `url(${list.animeImg})`,
+                        xs: `url(${list.animeImg})`,
+                        md: `none`,
+                        lg: "none"
+                    },
+                    backgroundSize: {
+                        sm: "800px"
+                    },
+                    backgroundRepeat: {
+                        sm: "no-repeat"
+                    },
+                    background: "rgba(14,14,14, 0.2)"
+                }}
+            >
             <Stack 
                 direction="row" 
                 justifyContent = "space-between"
                 alignItems = "center"
                 gap={3}
-                sx={{background: "#0e0e0e",borderRadius: 5, mt: 2, pl: 3, overflow: 'hidden'}}
+                sx={{
+                    mt: 2, pl: 3, overflow: 'hidden',
+                }}
             >
                 <Stack 
                     direction = "column" 
                     gap={3} 
                     justifyContent = "center" 
-                    sx={{color: "#fff", width: '70vw'}}
+                    sx={{
+                        color: "#fff", width: '70vw',
+                        borderRadius: "15px",
+                        pl: 1,
+                        mt: {
+                            sm: "90px",
+                            xs: "90px",
+                            md: "inherit",
+                            lg: "inherit"
+                        },
+                        backdropFilter: "blur(15px)"
+                    }}
                 >
                     {/* title */}
 
-                    <Typography variant="h4">
+                    <Typography sx={{
+                        typography: { 
+                            sm: 'h5',
+                            xs: 'h6'
+                        }
+                    }}>
                         {list.animeTitle}
                     </Typography>
                     {/* genre */}
@@ -83,7 +122,7 @@ const Topbar = () => {
                         {list.genres.map((genre,idx) => (
                             <Link to={`/genre/${genre.toLowerCase()}`}>
                                 <Button 
-                                    variant="outlined"
+                                    variant="contained"
                                     key={idx}
                                     size="small"
                                 >
@@ -94,14 +133,25 @@ const Topbar = () => {
                     </Stack>
                     <Link to = {list.animeId ? `/anime-details/${list.animeId}` : null}>
                         <Button size="large" color="error" variant="contained"
-                        sx = {{display: 'flex', justifyContent: "center", width: '65vw'}}>
-                        Play
+                        sx = {{display: 'flex', justifyContent: "center", width: '70vw'}}>
+                        Watch Now
                         <PlayArrowIcon sx={{ fontSize:20, color: 'white', ml:'5px'}}/>
                         </Button>
                     </Link>
                 </Stack>
-                <img src={list.animeImg} alt={list.animeTitle} height="360" style={{borderRadius:10}}/>
+                <Box sx={{
+                    display: {
+                        lg: "inherit",
+                        md: "inherit",
+                        sm: "none",
+                        xs: "none"
+                    }
+                }}>
+                    <img src={list.animeImg} alt={list.animeTitle} height="360"
+                    style={{borderRadius:10}}/>
+                </Box>
             </Stack>
+            </Paper>
             ): null}
         </div>
         ))}

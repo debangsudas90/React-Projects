@@ -31,7 +31,7 @@ const GenreFeed = () => {
           Search Results for <span style={{ color: '#F31503' }}>{category}</span> anime
         </Typography>
 
-        <Videos videos={videos}/>
+        <Videos pageCount={pageCount} changeVideos={setPageCount} videos={videos}/>
 
 
         {/* load more recent ep */}

@@ -83,6 +83,7 @@ a {
   .copyright{
     display:none !important;
   }
+
 }
 
 @media screen and (max-width: 600px) {
@@ -94,6 +95,6 @@ a {
     height: 45vh !important;
   }
   .search-bar{
-    width:150px;
+    width:100px;
   }
 }

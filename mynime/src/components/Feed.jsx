@@ -19,7 +19,7 @@ const Feed = () => {
   // }
 
   return (
-    <Box minHeight='95vh' sx={{backgroundColor: "#0e0e0e", pl: 4, pr: 4}}>
+    <Box minHeight='95vh' sx={{backgroundColor: "#0e0e0e"}}>
       
       <Topbar/>
 
@@ -29,7 +29,7 @@ const Feed = () => {
           Recent <span style={{ color: '#F31503' }}>Episodes</span>
         </Typography>
 
-        <Videos videos={videos}/>
+        <Videos pageCount={pageCount} changeVideos={setPageCount} videos={videos}/>
 
 
         {/* load more recent ep */}

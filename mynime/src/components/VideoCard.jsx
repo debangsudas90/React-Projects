@@ -11,7 +11,8 @@ const VideoCard = ({ video }) => {
         `/vidcdn/watch/${video.episodeId}` : 
         `/anime-details/${video.animeId}`
       }>
-        <CardMedia 
+        <CardMedia
+          component = "img" 
           image = {video?.animeImg}
           alt = {video?.animeTitle}
           sx = {{ width: 200, height: 300 }}
@@ -23,7 +24,7 @@ const VideoCard = ({ video }) => {
         <Link to={`/anime-details/${video?.animeId}`}>
           <Tooltip title={video?.animeTitle}>
             <Typography variant="subtitle1" fontWeight="bold" color="#fff">
-              {video?.animeTitle.length > 16 ? video?.animeTitle.slice(0,17)+"..." :
+              {video?.animeTitle.length > 16 ? video?.animeTitle.slice(0,16)+"..." :
               video?.animeTitle}
             </Typography>
           </Tooltip>
@@ -31,7 +32,7 @@ const VideoCard = ({ video }) => {
 
         {video.episodeId ? 
           <Link to = {`/vidcdn/watch/${video?.episodeId}`}>           
-            <Typography noWrap variant="subtitle2" fontWeight="bold" color="gray">
+            <Typography variant="subtitle2" fontWeight="bold" color="gray">
               Episode {video?.episodeNum}
             </Typography>
           </Link>
