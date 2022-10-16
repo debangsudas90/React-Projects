@@ -15,16 +15,52 @@ const VideoCard = ({ video }) => {
           component = "img" 
           image = {video?.animeImg}
           alt = {video?.animeTitle}
-          sx = {{ width: 200, height: 300 }}
+          sx = {{ 
+            width: {
+              xs: 150,
+              sm: 150,
+              md: 200,
+              lg: 200
+            }, 
+            height: {
+              xs: 200,
+              sm: 150,
+              md: 300,
+              lg: 300
+            } 
+          }}
         />
       </Link>
 
-      <CardContent sx={{ backgroundColor: '#1e1e1e', height: 'auto'}}>
+      <CardContent sx={{ 
+        backgroundColor: '#1e1e1e', height: 'auto', '&:last-child': { pb: 2.5 },
+        width: {
+          xs: 120,
+          sm: 120,
+          md: 169,
+          lg: 169
+        }
+      }}>
 
         <Link to={`/anime-details/${video?.animeId}`}>
           <Tooltip title={video?.animeTitle}>
-            <Typography variant="subtitle1" fontWeight="bold" color="#fff">
-              {video?.animeTitle.length > 16 ? video?.animeTitle.slice(0,16)+"..." :
+            <Typography variant="subtitle1" color="#fff"
+            sx={{
+              typography: { 
+                sm: 'subtitle2',
+                xs: 'subtitle2',
+                md: 'subtitle1',
+                lg: 'subtitle1'
+              },
+              fontWeight: {
+                xs: "medium",
+                sm: "500",
+                md: "bold",
+                lg: "bold"
+              }
+            }}
+            >
+              {video?.animeTitle.length > 15 ? video?.animeTitle.slice(0,14)+"..." :
               video?.animeTitle}
             </Typography>
           </Tooltip>

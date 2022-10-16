@@ -109,11 +109,15 @@ const Topbar = () => {
                     <Typography fontWeight = "bold" sx={{
                         typography: { 
                             sm: 'h5',
-                            xs: 'h6'
+                            xs: 'h6',
+                            md: 'h4',
+                            lg: 'h4'
                         },
                         p: {
                             sm: 2,
-                            xs: 2
+                            xs: 2,
+                            md: "inherit",
+                            lg: "inherit"
                         },
                         pb: {
                             sm: 0,

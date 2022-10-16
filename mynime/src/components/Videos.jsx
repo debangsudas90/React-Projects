@@ -14,7 +14,15 @@ const Videos = ({ pageCount, changeVideos, videos }) => {
               
           </Box>
         ))}
-        <Box sx={{minWidth: 200, display: "flex", justifyContent: "center", alignItems: "center"}}>
+        <Box sx={{
+          minWidth: {
+            xs: 300,
+            sm: 200,
+            md: 200,
+            lg: 200
+          }, 
+          display: "flex", justifyContent: "center", alignItems: "center"
+        }}>
           <Button
             disabled = {pageCount === 1 ? true : false}
             onClick={() => changeVideos(pageCount-1)}

@@ -27,8 +27,22 @@ const GenreFeed = () => {
       
       {/* search results */}
       <Stack p={2} mt={3} sx={{ overflowY: 'auto' }}>
-        <Typography variant='h4' fontWeight='bold' mb={2}  sx={{color:'white'}}>
-          Search Results for <span style={{ color: '#F31503' }}>{category}</span> anime
+        <Typography mb={2}  sx={{
+          color:'white',
+          typography: { 
+            sm: 'h5',
+            xs: 'h5',
+            md: 'h4',
+            lg: 'h4'
+          },
+          fontWeight: {
+            xs: "medium",
+            sm: "500",
+            md: "bold",
+            lg: "bold"
+          }
+        }}>
+          Search Results for <span style={{ color: '#F31503' }}>{category}</span> genre
         </Typography>
 
         <Videos pageCount={pageCount} changeVideos={setPageCount} videos={videos}/>

@@ -12,11 +12,6 @@ const Feed = () => {
     fetchFromApi(`recent-release?type=1&page=${pageCount}`)
       .then((data) => setVideos(data))
   }, [pageCount])
-  
-  // function handleCount() {
-  //   setPageCount(pageCount+1)
-  //   console.log(pageCount)
-  // }
 
   return (
     <Box minHeight='95vh' sx={{backgroundColor: "#0e0e0e"}}>
@@ -25,7 +20,21 @@ const Feed = () => {
 
       {/* recent episodes */}
       <Stack p={2} mt={6} sx={{ overflowY: 'auto' }}>
-        <Typography variant='h4' fontWeight='bold' mb={2}  sx={{color:'white'}}>
+        <Typography mb={2}  sx={{
+          color:'white',
+          typography: { 
+            sm: 'h5',
+            xs: 'h5',
+            md: 'h4',
+            lg: 'h4'
+          },
+          fontWeight: {
+            xs: "medium",
+            sm: "500",
+            md: "bold",
+            lg: "bold"
+          }
+        }}>
           Recent <span style={{ color: '#F31503' }}>Episodes</span>
         </Typography>
 
