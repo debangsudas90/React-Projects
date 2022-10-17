@@ -9,7 +9,8 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 
-import { fetchFromApi } from '../utils/fetchFromApi';
+import { fetchFromApi } from '../utils/fetchFromApi'
+import { categories } from '../utils/constants'
 
 const Topbar = () => {
 
@@ -83,6 +84,12 @@ const Topbar = () => {
                 gap={3}
                 sx={{
                     mt: 2, pl: 3, overflow: 'hidden',
+                    background: {
+                        xs: "",
+                        sm: "",
+                        md: "linear-gradient(115deg, rgb(0, 0, 0) 25.8%, rgb(178, 14, 14) 112.6%)",
+                        lg: "linear-gradient(115deg, rgb(0, 0, 0) 25.8%, rgb(178, 14, 14) 112.6%)",
+                    }
                 }}
             >
                 <Stack 
@@ -129,14 +136,19 @@ const Topbar = () => {
                     >
                         {list.genres.map((genre,idx) => (
                             <div>
-                                <Button 
-                                    variant="contained"
-                                    key={genre}
-                                    size="small"
-                                >
-                                {genre}
-                                </Button>
-                            </div>
+                            {categories.some(category => category.name === genre) ?
+                            <Link to = {`/genre/${genre.toLowerCase()}`}>
+                              <Button key = {genre} variant="contained" size = "medium"
+                              >
+                              {genre}
+                              </Button>
+                            </Link>
+                            :
+                            <Button key = {genre} variant="contained" size = "medium"
+                            >
+                            {genre}
+                            </Button>}
+                          </div>
                         ))}
                     </Stack>
 

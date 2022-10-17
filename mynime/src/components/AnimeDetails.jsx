@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import { Box, Stack, Typography, Button } from '@mui/material'
 
 import { fetchFromApi } from '../utils/fetchFromApi'
+import { categories } from '../utils/constants'
 
 const AnimeDetails = () => {
 
@@ -64,10 +65,18 @@ const AnimeDetails = () => {
               <Stack direction="row" gap={2} flexWrap="wrap">
                 {anime?.genres?.map((genre) => (
                   <div>
-                  <Button key = {genre} fullWidth variant="contained" size = "medium"
-                  >
-                  {genre}
-                  </Button>
+                    {categories.some(category => category.name === genre) ?
+                    <Link to = {`/genre/${genre.toLowerCase()}`}>
+                      <Button key = {genre} variant="contained" size = "medium"
+                      >
+                      {genre}
+                      </Button>
+                    </Link>
+                    :
+                    <Button key = {genre} variant="contained" size = "medium"
+                    >
+                    {genre}
+                    </Button>}
                   </div>
                 ))}
               </Stack>
@@ -125,7 +134,7 @@ const AnimeDetails = () => {
                     xs: '110px',
                   }
                 }}
-              >
+                >
                 {`EP - ${episode?.episodeNum}`}
               </Button>
             </Link>
@@ -138,3 +147,4 @@ const AnimeDetails = () => {
 }
 
 export default AnimeDetails
+{/* {console.log(categories.some(category => category.name === genre))} */}
