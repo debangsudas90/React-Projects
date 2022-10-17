@@ -147,4 +147,3 @@ const AnimeDetails = () => {
 }
 
 export default AnimeDetails
-{/* {console.log(categories.some(category => category.name === genre))} */}

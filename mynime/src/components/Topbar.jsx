@@ -69,7 +69,7 @@ const Topbar = () => {
                         lg: "none"
                     },
                     backgroundSize: {
-                        sm: "800px"
+                        sm: "850px"
                     },
                     backgroundRepeat: {
                         sm: "no-repeat"
