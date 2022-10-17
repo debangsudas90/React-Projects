@@ -9,12 +9,12 @@ const Navbar = () => {
     <Stack
         direction="row"
         alignItems="center"
-        p={1}
+        p={1.5}
         sx={{position: 'sticky', background: '#000', top: 0, justifyContent: 'space-between', zIndex: "5"}}
     >
         <MenuToggle/>
         <Link to="/" >
-            <img src={logo} alt="logo" height={50} />
+            <img src={logo} alt="logo" height={40} />
         </Link>
         <Searchbar/>
     </Stack>

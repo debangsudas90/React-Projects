@@ -1,4 +1,4 @@
-import { Stack, Box, Button, Typography } from '@mui/material'
+import { Stack, Box, Button } from '@mui/material'
 import ArrowCircleRightRoundedIcon from '@mui/icons-material/ArrowCircleRightRounded';
 import ArrowCircleLeftRoundedIcon from '@mui/icons-material/ArrowCircleLeftRounded';
 import { VideoCard } from './'

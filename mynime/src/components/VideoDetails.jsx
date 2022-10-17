@@ -40,7 +40,7 @@ const VideoDetails = () => {
     }
     
     return (
-      <Box minHeight = "95vh">
+      <Box minHeight = "95vh" p={2}>
 
         {/* video player */}
         <Stack direction = "row" justifyContent="space-evenly">
@@ -48,6 +48,10 @@ const VideoDetails = () => {
           <Button 
             onClick={handlePrevEpisode}
             disabled={episodeNum === 1 ? true : false}
+            sx={{display: {
+              xs: "none",
+              sm: "inherit"
+            }}}
           >
             <Link to = {`/vidcdn/watch/${animeDetailId}-episode-${episodeNum-1}`}>
               <Tooltip title="Previous Episode">
@@ -65,6 +69,10 @@ const VideoDetails = () => {
           <Button 
             onClick={handleNextEpisode}
             disabled={episodeNum === parseInt(animeDetails?.totalEpisodes) ? true : false}
+            sx={{display: {
+              xs: "none",
+              sm: "inherit"
+            }}}
           >
             <Link to = {`/vidcdn/watch/${animeDetailId}-episode-${episodeNum+1}`}>
               <Tooltip title="Next Episode">
@@ -79,20 +87,35 @@ const VideoDetails = () => {
         {/* video-anime details */}
         <Stack direction = "row" justifyContent = "space-evenly" width="100%" mt = "25px">
           <Link to={`/anime-details/${animeDetailId}`}>
-          <img src={animeDetails.animeImg} alt={animeDetails.animeTitle} height="150" style={{borderRadius:10}} />
+          <img src={animeDetails.animeImg} className="video-details-img" alt={animeDetails.animeTitle} height="150" style={{borderRadius:10}} />
           </Link>
 
-          <Stack direction = "column" gap={1} justifyContent = "center" sx={{color: "#fff", width: '70vw'}}>
+          <Stack direction = "column" gap={1} p={2} justifyContent = "center" sx={{color: "#fff", width: '70vw'}}>
             {/* title */}
 
-            <Typography variant="h5">
+            <Typography sx={{
+              typography: { 
+                xs: 'h6',
+                md: 'h5'
+              }
+            }}>
               <span style={{ color: '#e6211c' }}>{animeDetails.animeTitle}</span> - {episodeNum}
             </Typography>
 
-            <Typography variant="subtitle1">
+            <Typography sx={{
+              typography: { 
+                xs: 'caption',
+                md: 'subtitle1'
+              }
+            }}>
               Episodes - {animeDetails.totalEpisodes}
             </Typography>
-            <Typography variant="subtitle1">
+            <Typography sx={{
+              typography: { 
+                xs: 'caption',
+                md: 'subtitle1'
+              }
+            }}>
             {animeDetails.type}
             </Typography>
 

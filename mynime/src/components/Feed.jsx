@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Box, Stack, Typography, LinearProgress } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 import { Videos,Topbar } from './'
 import { fetchFromApi } from '../utils/fetchFromApi';
 

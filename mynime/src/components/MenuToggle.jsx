@@ -36,20 +36,34 @@ export default function BasicMenu() {
           p={2}
           textAlign='center'
         >
-          <Typography variant='h5' fontWeight="bold" sx={{color: '#d32f2f'}}>
+          <Typography sx={{
+            color: '#d32f2f',
+            typography: { 
+              sm: 'h5',
+              xs: 'h5',
+              md: 'h4',
+              lg: 'h4'
+            },
+            fontWeight: {
+              xs: "500",
+              sm: "500",
+              md: "bold",
+              lg: "bold"
+            }
+          }}>
             Genres
           </Typography>
 
           <Stack direction = "row" flexWrap = "wrap" justifyContent = "center" sx={{maxHeight: '50vh'}}>
             
-            {categories.map((category) => (
+            {categories.map((category, index) => (
               <Link to={`/genre/${category?.name.toLocaleLowerCase()}`}>
                 <button 
                   className='category-btn'
+                  key={category?.name}
                   style={{
                     color:'white'
                   }}
-                  key={category.name}  
                 >
                   <span>{category.name}</span>
                 </button>

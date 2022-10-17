@@ -2,10 +2,9 @@ import { Link } from "react-router-dom"
 import { Card, CardMedia, CardContent, Typography, Tooltip } from "@mui/material"
 
 const VideoCard = ({ video }) => {
-  // console.log(video)
 
   return (
-    <Card sx={{backgroundColor: '#000'}}>
+    <Card sx={{backgroundColor: '#000', borderRadius: "10px"}}>
 
       <Link to = {video.episodeId ? 
         `/vidcdn/watch/${video.episodeId}` : 

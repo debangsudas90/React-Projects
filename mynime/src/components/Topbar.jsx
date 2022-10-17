@@ -20,7 +20,6 @@ const Topbar = () => {
     useEffect(() => {
         fetchFromApi(`top-airing?page=1`)
             .then((data) => setTopAiring(data.slice(0,9)))
-        
     },[])
 
     const theme = useTheme();
@@ -41,13 +40,11 @@ const Topbar = () => {
 
   return (
 
-    // material-ui-carousel
-    
+    // material-ui-carousel 
     <Box sx={{flexGrow: 1, pl: 3, pr: 3}}>
     <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
-        autoplay={false}
         containerStyle={{
             transition: 'transform 0.35s cubic-bezier(0.15, 0.3, 0.25, 1) 0s'
         }}
@@ -76,7 +73,7 @@ const Topbar = () => {
                     backgroundRepeat: {
                         sm: "no-repeat"
                     },
-                    background: "rgba(14,14,14, 0.2)"
+                    background: "rgb(30,30,30)"
                 }}
             >
             <Stack 
@@ -105,7 +102,6 @@ const Topbar = () => {
                     }}
                 >
                     {/* title */}
-
                     <Typography fontWeight = "bold" sx={{
                         typography: { 
                             sm: 'h5',
@@ -126,6 +122,7 @@ const Topbar = () => {
                     }}>
                         {list.animeTitle}
                     </Typography>
+
                     {/* genre */}
                     <Stack direction="row"  flexWrap="wrap" gap={2} 
                     sx={{display: {xs: 'none', sm: 'none', md: 'inherit', lg: 'inherit'}}}
@@ -134,7 +131,7 @@ const Topbar = () => {
                             <Link to={`/genre/${genre.toLowerCase()}`}>
                                 <Button 
                                     variant="contained"
-                                    key={idx}
+                                    key={genre}
                                     size="small"
                                 >
                                 {genre}
@@ -142,6 +139,7 @@ const Topbar = () => {
                             </Link>
                         ))}
                     </Stack>
+
                     <Link to = {list.animeId ? `/anime-details/${list.animeId}` : null}>
                         <Button size="medium" color="error" variant="contained"
                         sx = {{display: 'flex', justifyContent: "center", width: '70vw'}}>

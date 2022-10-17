@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Box, Stack, Typography } from '@mui/material'
-import { Videos,Topbar } from './'
+import { Videos } from './'
 import { fetchFromApi } from '../utils/fetchFromApi';
 import { useParams } from 'react-router-dom';
 
@@ -15,11 +15,6 @@ const SearchFeed = () => {
     fetchFromApi(`search?keyw=${searchTerm}&page=${pageCount}`)
       .then((data) => setVideos(data))
   }, [searchTerm, pageCount])
-  
-  // function handleCount() {
-  //   setPageCount(pageCount+1)
-  //   console.log(pageCount)
-  // }
 
   return (
     <Box minHeight='95vh'>
@@ -45,15 +40,6 @@ const SearchFeed = () => {
         </Typography>
 
         <Videos pageCount={pageCount} changeVideos={setPageCount} videos={videos}/>
-
-
-        {/* load more recent ep */}
-        
-        {/* <Typography variant='h4' fontWeight='bold' mb={2}  sx={{color:'white'}}
-        onClick = {handleCount}
-        >
-          More...
-        </Typography> */}
         
       </Stack>
     
