@@ -63,12 +63,12 @@ const AnimeDetails = () => {
               {/* genre */}
               <Stack direction="row" gap={2} flexWrap="wrap">
                 {anime?.genres?.map((genre) => (
-                  <Link to={`/genre/${genre.toLowerCase()}`}>
-                    <Button key = {genre} fullWidth variant="contained" size = "medium"
-                    >
-                    {genre}
-                    </Button>
-                  </Link>
+                  <div>
+                  <Button key = {genre} fullWidth variant="contained" size = "medium"
+                  >
+                  {genre}
+                  </Button>
+                  </div>
                 ))}
               </Stack>
               {/* synopsis */}

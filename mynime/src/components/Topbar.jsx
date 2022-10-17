@@ -128,7 +128,7 @@ const Topbar = () => {
                     sx={{display: {xs: 'none', sm: 'none', md: 'inherit', lg: 'inherit'}}}
                     >
                         {list.genres.map((genre,idx) => (
-                            <Link to={`/genre/${genre.toLowerCase()}`}>
+                            <div>
                                 <Button 
                                     variant="contained"
                                     key={genre}
@@ -136,7 +136,7 @@ const Topbar = () => {
                                 >
                                 {genre}
                                 </Button>
-                            </Link>
+                            </div>
                         ))}
                     </Stack>
 
