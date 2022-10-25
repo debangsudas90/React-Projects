@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Img = styled.img`
   width:100%;
-  height:100%;
+  height:300px;
   object-fit: cover;
   overflow: hidden;
 `
@@ -32,6 +32,7 @@ export const BlogCard = styled.div`
   }
 `;
 export const TitleContent = styled.div`
+  padding-top: 10px;
   text-align: center;
   z-index: 20;
   width: 100%;

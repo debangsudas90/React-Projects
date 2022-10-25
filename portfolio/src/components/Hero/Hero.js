@@ -12,7 +12,7 @@ const Hero = (props) => (
         My name is Debangsu Das <br/>
       </SectionTitle>
       <SectionText>
-        I'm a front end web developer who enjoys building fun and rich interactive websites. Check out my works >>
+        I'm a front end web developer who enjoys building fun and rich interactive websites. Check out my works !!
       </SectionText>
       <Button onClick={() => window.location = "#tech"}>
         Learn More
