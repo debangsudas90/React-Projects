@@ -17,15 +17,17 @@ const Footer = () => {
         <CompanyContainer>
           <Slogan>Also Contact me on</Slogan>
         </CompanyContainer>
-        <SocialIcons href="https://github.com/debangsudas90">
-          <AiFillGithub size="3rem"/>
-        </SocialIcons>
-        <SocialIcons href="https://www.linkedin.com/in/debangsu-das-894069212/">
-          <AiFillLinkedin size="3rem"/>
-        </SocialIcons>
-        <SocialIcons href="https://twitter.com/Debangsu6">
-          <AiFillTwitterCircle size="3rem"/>
-        </SocialIcons>
+        <SocialContainer>
+          <SocialIcons href="https://github.com/debangsudas90">
+            <AiFillGithub size="3rem"/>
+          </SocialIcons>
+          <SocialIcons href="https://www.linkedin.com/in/debangsu-das-894069212/">
+            <AiFillLinkedin size="3rem"/>
+          </SocialIcons>
+          <SocialIcons href="https://twitter.com/Debangsu6">
+            <AiFillTwitterCircle size="3rem"/>
+          </SocialIcons>
+        </SocialContainer>
       </SocialIconsContainer>
     </FooterWrapper>
   );

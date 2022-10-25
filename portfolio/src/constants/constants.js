@@ -12,7 +12,7 @@ export const projects = [
     title: 'Mynime',
     description:"It is a simple and beautiful OTT platform to enjoy all your favourite animated shows in one place without any ads or subscription!!",
     image: '/images/2.png',
-    tags: ['React', 'JavaScript', 'Material UI', 'Axios'],
+    tags: ['React', 'JavaScript', 'Material UI'],
     source: 'https://github.com/debangsudas90/React-Projects/tree/master/mynime',
     visit: 'https://mynime.netlify.app/',
     id: 1,
