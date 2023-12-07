@@ -1,18 +1,21 @@
 const express = require('express')
+const Income = require('../models/IncomeModel')
+const Expense = require('../models/ExpenseModel')
+
+const {
+    getIncomes,
+    createIncome
+} = require('../controller/incomeController')
 
 const router = express.Router()
 
 //Income -->
 
 //get all incomes
-router.get('/getIncomes', (req, res) => {
-    res.json({mssg: "get all incomes"})
-})
+router.get('/getIncomes', getIncomes)
 
 //add income
-router.post('/addIncome', (req, res) => {
-    res.json({mssg: "add a new income"})
-})
+router.post('/addIncome', createIncome)
 
 //delete income
 router.delete('/deleteIncome/:id', (req, res) => {
@@ -52,7 +55,9 @@ module.exports = router
  * all incomes - /api/transac/getIncomes
  * add income - /api/transac/addIncome
  * delete income - /api/transac/deleteIncome/:id
+ * update income - /api/transac/updateIncome/:id
  * all expense - /api/transac/getExpenses
  * add expense - /api/transac/addExpense
  * delete expense - /api/transac/deleteExpense/:id
+ * update expense - /api/transac/updateExpense/:id
  */
