@@ -4,8 +4,15 @@ const Expense = require('../models/ExpenseModel')
 
 const {
     getIncomes,
-    createIncome
+    createIncome,
+    deleteIncome
 } = require('../controller/incomeController')
+
+const {
+    getExpenses,
+    createExpense,
+    deleteExpense
+} = require('../controller/expenseController')
 
 const router = express.Router()
 
@@ -18,9 +25,7 @@ router.get('/getIncomes', getIncomes)
 router.post('/addIncome', createIncome)
 
 //delete income
-router.delete('/deleteIncome/:id', (req, res) => {
-    res.json({mssg: "deleted a income"})
-})
+router.delete('/deleteIncome/:id', deleteIncome)
 
 router.patch('/updateIncome/:id', (req,res) => {
     res.json({mssg: "updated a income"})
@@ -30,19 +35,13 @@ router.patch('/updateIncome/:id', (req,res) => {
 //Expense -->
 
 //get all expenses
-router.get('/getExpenses', (req, res) => {
-    res.json({mssg: "get all expenses"})
-})
+router.get('/getExpenses', getExpenses)
 
 //add expense
-router.post('/addExpense', (req, res) => {
-    res.json({mssg: "add a new expense"})
-})
+router.post('/addExpense', createExpense)
 
 //get all incomes
-router.delete('/deleteExpense/:id', (req, res) => {
-    res.json({mssg: "deleted a expense"})
-})
+router.delete('/deleteExpense/:id', deleteExpense)
 
 router.patch('/updateExpense/:id', (req,res) => {
     res.json({mssg: "updated a expense"})
