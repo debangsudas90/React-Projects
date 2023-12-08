@@ -13,10 +13,18 @@ const createExpense = async(req, res) => {
     const {title, amount, category, description} = req.body
 
     try {
+        if(!title || !amount || !category) {
+            res.status(400).json({message: "All fields are required!"})
+            return
+        }
+        if(amount <=0 || !amount === 'number') {
+            res.status(400).json({message: "Amount must be positive"})
+            return
+        }
         const expense = await Expense.create({title, amount, category, description})
         res.status(200).json(expense)
     } catch (error) {
-        res.status(400).json({error: error.message})
+        res.status(500).json({message: "Server error"})
     }
 }
 
@@ -25,13 +33,13 @@ const deleteExpense = async (req, res)  => {
     const { id } = req.params
 
     if(!mongoose.Types.ObjectId.isValid(id)) {
-        res.status(404).json({"error": "No such Expense"})
+        res.status(404).json({message: "No such Expense"})
     }
 
     const expense = await Expense.findOneAndDelete({_id: id})
 
     if(!expense) {
-        res.status(400).json({"error": "No such Expense"})
+        res.status(400).json({message: "No such Expense"})
     }
 
     res.status(200).json(expense)

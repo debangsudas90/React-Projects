@@ -21,7 +21,6 @@ const incomeSchema = new Schema({
     },
     description: {
         type: String,
-        required: false,
         trim: true
     }
 }, {timestamps: true})
