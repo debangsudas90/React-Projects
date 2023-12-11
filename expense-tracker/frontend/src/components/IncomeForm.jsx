@@ -37,7 +37,7 @@ const IncomeForm = () => {
   return (
     <form onSubmit={handleSubmit} style={{marginTop: "15px"}}>
       <Grid container spacing={2}>
-        <Grid item xs={7}>
+        <Grid item xs={10}>
           <TextField
             label="Salary Title"
             variant="outlined"
@@ -47,7 +47,7 @@ const IncomeForm = () => {
             onChange={(e) => setTitle(e.target.value)}
           />
         </Grid>
-        <Grid item xs={7}>
+        <Grid item xs={10}>
           <TextField
             type="number"
             label="Salary Amount (in ₹)"
@@ -58,7 +58,7 @@ const IncomeForm = () => {
             onChange={(e) => setAmount(e.target.value)}
           />
         </Grid>
-        <Grid item xs={7}>
+        <Grid item xs={10}>
           <TextField
             label="Add a reference"
             variant="outlined"
@@ -66,6 +66,8 @@ const IncomeForm = () => {
             name="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            multiline
+            maxRows={4}
           />
         </Grid>
         <Grid item xs={12}>
