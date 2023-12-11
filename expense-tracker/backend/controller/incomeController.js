@@ -10,10 +10,10 @@ const getIncomes = async (req, res) => {
 
 // add income - /api/transac/addIncome
 const createIncome = async(req, res) => {
-    const {title, amount, category, description} = req.body
+    const {title, amount, description} = req.body
 
     try {
-        if(!title || !amount || !category) {
+        if(!title || !amount || !description) {
             res.status(400).json({message: "All fields are required!"})
             return
         }
@@ -21,10 +21,10 @@ const createIncome = async(req, res) => {
             res.status(400).json({message: "Amount must be positive"})
             return
         }
-        const income = await Income.create({title, amount, category, description})
+        const income = await Income.create({title, amount, description})
         res.status(200).json(income)
     } catch (error) {
-        res.status(500).json({message: "Server Error"})
+        res.status(500).json({message: error.message})
     }
 }
 

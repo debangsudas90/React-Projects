@@ -10,10 +10,10 @@ const getExpenses = async (req, res) => {
 
 // add expense - /api/transac/addExpense
 const createExpense = async(req, res) => {
-    const {title, amount, category, description} = req.body
+    const {title, amount, description} = req.body
 
     try {
-        if(!title || !amount || !category) {
+        if(!title || !amount || !description) {
             res.status(400).json({message: "All fields are required!"})
             return
         }
@@ -21,10 +21,10 @@ const createExpense = async(req, res) => {
             res.status(400).json({message: "Amount must be positive"})
             return
         }
-        const expense = await Expense.create({title, amount, category, description})
+        const expense = await Expense.create({title, amount, description})
         res.status(200).json(expense)
     } catch (error) {
-        res.status(500).json({message: "Server error"})
+        res.status(500).json({message: error.message})
     }
 }
 

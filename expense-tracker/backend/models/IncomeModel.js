@@ -13,14 +13,9 @@ const incomeSchema = new Schema({
         required: true,
         trim: true
     },
-    category: {
-        type: String, 
-        required: true,
-        default: "income",
-        trim: true
-    },
     description: {
         type: String,
+        required: true,
         trim: true
     }
 }, {timestamps: true})
