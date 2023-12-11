@@ -50,7 +50,7 @@ const IncomeForm = () => {
         <Grid item xs={7}>
           <TextField
             type="number"
-            label="Salary Amount"
+            label="Salary Amount (in ₹)"
             variant="outlined"
             fullWidth
             name="amount"

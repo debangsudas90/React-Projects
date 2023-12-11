@@ -8,7 +8,11 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 const IncomeDetails = ({ income }) => {
   return (
     <Box display="flex" justifyContent = "space-between">
-        <Box sx={{marginBottom: "20px"}}>
+        <Box sx={{marginBottom: "20px", 
+            width:"100%", 
+            backgroundColor: `rgba(255, 255, 255, 0.2)`,
+            padding: "10px", borderRadius: "12px" ,  
+        }}>
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: "10px" }}>
                   <FiberManualRecordIcon />
                   <Typography variant="h6" fontWeight="bold" style={{ marginLeft: '8px' }}>
@@ -42,7 +46,7 @@ const IncomeDetails = ({ income }) => {
             </Grid>
         </Grid>
         </Box>
-        <IconButton onClick={() => console.log("clciked")}>
+        <IconButton  sx={{marginLeft: "20px", marginRight: "20px" }}onClick={() => console.log("clciked")}>
             <DeleteIcon />
         </IconButton>
     </Box>

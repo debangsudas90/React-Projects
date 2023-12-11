@@ -7,9 +7,11 @@ import Transactions from '../components/Transactions';
 import Incomes from '../components/Incomes';
 
 import Typography from '@mui/material/Typography';
-import { Box, Button, Grid } from '@mui/material';
-
-
+import { Box, Button, Divider, Grid } from '@mui/material';
+import EqualizerRoundedIcon from '@mui/icons-material/EqualizerRounded';
+import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded';
+import AddCardRoundedIcon from '@mui/icons-material/AddCardRounded';
+import CreditCardOffRoundedIcon from '@mui/icons-material/CreditCardOffRounded';
 
 const Home = () => {
   const [activeComponent, setActiveComponent] = useState(null);
@@ -42,22 +44,38 @@ const Home = () => {
             justifyContent="flex-start"
             alignItems="flex-start"
             height="100%"
-          >
-            <Button onClick={() => setActiveComponent(1)}>
-              Dashboard
-            </Button>
-            <Button onClick={() => setActiveComponent(2)}>
-              View Transactions
-            </Button>
-            <Button onClick={() => setActiveComponent(3)}>
-              Incomes
-            </Button>
-            <Button onClick={() => setActiveComponent(4)}>
-              Expenses
-            </Button>
+            sx={{borderRadius: "15px", padding: "5px"}}
+          > 
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              
+              <EqualizerRoundedIcon />
+              <Button onClick={() => setActiveComponent(1)}>
+                Dashboard
+              </Button>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <AccountBalanceRoundedIcon/>
+              <Button onClick={() => setActiveComponent(2)}>
+                View Transactions
+              </Button>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <AddCardRoundedIcon/>
+              <Button onClick={() => setActiveComponent(3)}>
+                Incomes
+              </Button>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <CreditCardOffRoundedIcon/>
+              <Button onClick={() => setActiveComponent(4)}>
+                Expenses
+              </Button>
+            </div>
           </Box>
         </Grid>
-        <Grid item xs={10} height="78vh" sx={{backgroundColor: "lightgrey"}}>
+        <Grid item xs={10} height="78vh" 
+          sx={{backgroundColor: "lightgrey", borderRadius: "15px", padding: "5px"}}
+        >
           {activeComponent && renderComponent(activeComponent)}
         </Grid>
       </Grid>
