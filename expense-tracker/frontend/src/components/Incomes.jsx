@@ -7,24 +7,28 @@ const Incomes = () => {
 
   const [incomes, setIncomes] = useState(null)
   const [totalIncome, setTotalIncome] = useState(0)
+  const [forceRefresh, setForceRefresh] = useState(true);
 
-  useEffect(() => {
-    
-    const fetchIncomes = async() => {
-      const response = await fetch("http://localhost:4000/api/transac/getIncomes")
-      const json = await response.json()
+  const fetchIncomes = async() => {
+    const response = await fetch("http://localhost:4000/api/transac/getIncomes")
+    const json = await response.json()
 
-      if(response.ok) {
-        setIncomes(json)
-      }
+    if(response.ok) {
+      setIncomes(json)
     }
-    //grab the first 4 incomes/expenses
-    fetchIncomes()
-    
-  }, [])
-  
+  }
+
   useEffect(() => {
-    // Check if incomes array has been set and is not empty
+    // Fetch data when forceRefresh is true
+    if (forceRefresh) {
+      fetchIncomes();
+      // Reset forceRefresh to prevent infinite loop
+      setForceRefresh(false);
+    }
+  }, [forceRefresh]);
+  
+  //total income
+  useEffect(() => {
     if (incomes) {
       addIncome();
     }
