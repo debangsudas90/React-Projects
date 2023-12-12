@@ -5,10 +5,10 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 
-const IncomeDetails = ({ income, setForceRefresh } ) => {
+const ExpenseDetails = ({ expense, setForceRefresh } ) => {
 
   const handleClick = async() => {
-    const response = await fetch("http://localhost:4000/api/transac/deleteIncome/" + income._id, {
+    const response = await fetch("http://localhost:4000/api/transac/deleteExpense/" + expense._id, {
       method: 'DELETE'
     })
 
@@ -28,37 +28,37 @@ const IncomeDetails = ({ income, setForceRefresh } ) => {
             padding: "10px", borderRadius: "12px" ,  
         }}>
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: "10px" }}>
-                  <FiberManualRecordIcon />
-                  <Typography variant="h6" fontWeight="bold" style={{ marginLeft: '8px' }}>
-                    {income.title}
-                  </Typography>
+          <FiberManualRecordIcon />
+          <Typography variant="h6" fontWeight="bold" style={{ marginLeft: '8px' }}>
+            {expense.title}
+          </Typography>
         </div>
         <Grid container gap={4}>
             <Grid item>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <CurrencyRupeeIcon />
               <Typography variant="body1" gutterBottom style={{ marginLeft: '8px' }}>
-                {income.amount}
+                {expense.amount}
               </Typography>
             </div>
             </Grid>
             <Grid item>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <DateRangeOutlinedIcon />
-              <Typography variant="body1" gutterBottom style={{ marginLeft: '8px' }}>
-                {(() => {
-                  const date = new Date(income.createdAt);
-                  return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
-                })()}
-              </Typography>
+                <DateRangeOutlinedIcon />
+                <Typography variant="body1" gutterBottom style={{ marginLeft: '8px' }}>
+                  {(() => {
+                    const date = new Date(expense.createdAt);
+                    return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
+                  })()}
+                </Typography>
             </div>
             </Grid>
             <Grid item>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <ChatBubbleOutlineIcon />
-              <Typography variant="body1" gutterBottom style={{ marginLeft: '8px' }}>
-                {income.description}
-              </Typography>
+                  <ChatBubbleOutlineIcon />
+                  <Typography variant="body1" gutterBottom style={{ marginLeft: '8px' }}>
+                    {expense.description}
+                  </Typography>
             </div>
             </Grid>
         </Grid>
@@ -70,4 +70,4 @@ const IncomeDetails = ({ income, setForceRefresh } ) => {
   )
 }
 
-export default IncomeDetails
+export default ExpenseDetails
