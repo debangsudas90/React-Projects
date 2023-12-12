@@ -65,12 +65,12 @@ const Incomes = () => {
         <Grid container>
           <Grid item xs={4}>
             {/* form */}
-            <IncomeForm/>
+            <IncomeForm setForceRefresh={setForceRefresh}/>
           </Grid>
           <Grid item xs={8}>
             {/* details */}
             {incomes && incomes.slice(0,4).map((income) => (
-              <IncomeDetails key={income._id} income={income}/>
+              <IncomeDetails key={income._id} income={income} setForceRefresh = {setForceRefresh}/>
             ))}
           </Grid>
         </Grid>

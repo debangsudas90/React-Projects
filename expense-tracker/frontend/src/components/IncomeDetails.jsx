@@ -5,7 +5,21 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 
-const IncomeDetails = ({ income }) => {
+const IncomeDetails = ({ income, setForceRefresh } ) => {
+
+  const handleClick = async() => {
+    const response = await fetch("http://localhost:4000/api/transac/deleteIncome/" + income._id, {
+      method: 'DELETE'
+    })
+
+    const json = await response.json()
+    if(response.ok) {
+      console.log("deleted", json)
+      setForceRefresh(true)
+    }
+
+  }
+
   return (
     <Box display="flex" justifyContent = "space-between">
         <Box sx={{marginBottom: "20px", 
@@ -46,7 +60,7 @@ const IncomeDetails = ({ income }) => {
             </Grid>
         </Grid>
         </Box>
-        <IconButton  sx={{marginLeft: "20px", marginRight: "20px" }}onClick={() => console.log("clciked")}>
+        <IconButton sx={{marginLeft: "20px", marginRight: "20px" }}onClick={handleClick}>
             <DeleteIcon />
         </IconButton>
     </Box>

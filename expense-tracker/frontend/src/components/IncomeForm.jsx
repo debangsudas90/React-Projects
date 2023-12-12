@@ -1,7 +1,7 @@
 import { Button, Grid, TextField } from '@mui/material'
 import React, { useState } from 'react'
 
-const IncomeForm = () => {
+const IncomeForm = ({ setForceRefresh }) => {
 
     const [title, setTitle] = useState('')
     const [amount, setAmount] = useState('')
@@ -30,6 +30,7 @@ const IncomeForm = () => {
             setAmount('')
             setDescription('')
             console.log("new income added", json);
+            setForceRefresh(true)
         }
 
     } 
