@@ -1,8 +1,11 @@
 import { Button, Grid, TextField } from '@mui/material'
 import React, { useState } from 'react'
 
-const ExpenseForm = ({ setForceRefresh }) => {
+import { useExpensesContext } from '../hooks/useExpensesContext'
 
+const ExpenseForm = () => {
+
+    const { dispatch } = useExpensesContext()
     const [title, setTitle] = useState('')
     const [amount, setAmount] = useState('')
     const [description, setDescription] = useState('')
@@ -30,7 +33,7 @@ const ExpenseForm = ({ setForceRefresh }) => {
             setAmount('')
             setDescription('')
             console.log("new expense added", json);
-            setForceRefresh(true)
+            dispatch({ type: 'CREATE_EXPENSE', payload: json })
         }
 
     } 

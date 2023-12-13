@@ -2,30 +2,38 @@ import { Box, Divider, Grid, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import ExpenseDetails from './ExpenseDetails'
 import ExpenseForm from './ExpenseForm'
+import { useExpensesContext } from '../hooks/useExpensesContext'
 
 const Expenses = () => {
 
-  const [expenses, setExpenses] = useState(null)
+  const { expenses, dispatch } = useExpensesContext()
   const [totalExpense, setTotalExpense] = useState(0)
   const [forceRefresh, setForceRefresh] = useState(true);
-
-  const fetchExpenses = async() => {
-    const response = await fetch("http://localhost:4000/api/transac/getExpenses")
-    const json = await response.json()
-
-    if(response.ok) {
-      setExpenses(json)
-    }
-  }
-
+  
   useEffect(() => {
-    // Fetch data when forceRefresh is true
-    if (forceRefresh) {
-      fetchExpenses();
-      // Reset forceRefresh to prevent infinite loop
-      setForceRefresh(false);
+
+    const fetchExpenses = async() => {
+      const response = await fetch("http://localhost:4000/api/transac/getExpenses")
+      const json = await response.json()
+  
+      if(response.ok) {
+        dispatch({ type: 'SET_EXPENSES', payload: json })
+      }
     }
-  }, [forceRefresh]);
+
+    fetchExpenses()
+    
+  }, [])
+  
+
+  // useEffect(() => {
+  //   // Fetch data when forceRefresh is true
+  //   if (forceRefresh) {
+  //     fetchExpenses();
+  //     // Reset forceRefresh to prevent infinite loop
+  //     setForceRefresh(false);
+  //   }
+  // }, [forceRefresh]);u
   
   //total expense
   useEffect(() => {

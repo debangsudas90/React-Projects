@@ -5,8 +5,11 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 
+import { useIncomesContext } from '../hooks/useIncomesContext'
+
 const IncomeDetails = ({ income, setForceRefresh } ) => {
 
+  const { dispatch } = useIncomesContext()
   const handleClick = async() => {
     const response = await fetch("http://localhost:4000/api/transac/deleteIncome/" + income._id, {
       method: 'DELETE'
@@ -15,7 +18,7 @@ const IncomeDetails = ({ income, setForceRefresh } ) => {
     const json = await response.json()
     if(response.ok) {
       console.log("deleted", json)
-      setForceRefresh(true)
+      dispatch({ type: 'DELETE_INCOME', payload: json })
     }
 
   }

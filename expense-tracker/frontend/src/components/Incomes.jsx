@@ -3,29 +3,47 @@ import React, { useEffect, useState } from 'react'
 import IncomeDetails from './IncomeDetails'
 import IncomeForm from './IncomeForm'
 
+import { useIncomesContext } from '../hooks/useIncomesContext'
+
 const Incomes = () => {
 
-  const [incomes, setIncomes] = useState(null)
+  const { incomes, dispatch } = useIncomesContext()
   const [totalIncome, setTotalIncome] = useState(0)
   const [forceRefresh, setForceRefresh] = useState(true);
 
-  const fetchIncomes = async() => {
-    const response = await fetch("http://localhost:4000/api/transac/getIncomes")
-    const json = await response.json()
+  // const fetchIncomes = async() => {
+  //   const response = await fetch("http://localhost:4000/api/transac/getIncomes")
+  //   const json = await response.json()
 
-    if(response.ok) {
-      setIncomes(json)
-    }
-  }
+  //   if(response.ok) {
+  //     setIncomes(json)
+  //   }
+  // }
 
   useEffect(() => {
-    // Fetch data when forceRefresh is true
-    if (forceRefresh) {
-      fetchIncomes();
-      // Reset forceRefresh to prevent infinite loop
-      setForceRefresh(false);
+    
+    const fetchIncomes = async() => {
+      const response = await fetch("http://localhost:4000/api/transac/getIncomes")
+      const json = await response.json()
+  
+      if(response.ok) {
+        dispatch({ type: 'SET_INCOMES', payload: json })
+      }
     }
-  }, [forceRefresh]);
+
+    fetchIncomes()
+
+  }, [])
+  
+
+  // useEffect(() => {
+  //   // Fetch data when forceRefresh is true
+  //   if (forceRefresh) {
+  //     fetchIncomes();
+  //     // Reset forceRefresh to prevent infinite loop
+  //     setForceRefresh(false);
+  //   }
+  // }, [forceRefresh]);
   
   //total income
   useEffect(() => {

@@ -5,7 +5,11 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 
-const ExpenseDetails = ({ expense, setForceRefresh } ) => {
+import { useExpensesContext } from '../hooks/useExpensesContext'
+
+const ExpenseDetails = ({ expense } ) => {
+
+  const { dispatch } = useExpensesContext()
 
   const handleClick = async() => {
     const response = await fetch("http://localhost:4000/api/transac/deleteExpense/" + expense._id, {
@@ -15,7 +19,7 @@ const ExpenseDetails = ({ expense, setForceRefresh } ) => {
     const json = await response.json()
     if(response.ok) {
       console.log("deleted", json)
-      setForceRefresh(true)
+      dispatch({ type: 'DELETE_EXPENSE', payload: json })
     }
 
   }

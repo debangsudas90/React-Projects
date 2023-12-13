@@ -1,8 +1,11 @@
 import { Button, Grid, TextField } from '@mui/material'
 import React, { useState } from 'react'
 
+import { useIncomesContext } from '../hooks/useIncomesContext'
+
 const IncomeForm = ({ setForceRefresh }) => {
 
+    const { dispatch } = useIncomesContext()
     const [title, setTitle] = useState('')
     const [amount, setAmount] = useState('')
     const [description, setDescription] = useState('')
@@ -30,7 +33,7 @@ const IncomeForm = ({ setForceRefresh }) => {
             setAmount('')
             setDescription('')
             console.log("new income added", json);
-            setForceRefresh(true)
+            dispatch({ type: 'CREATE_INCOME', payload: json })
         }
 
     } 
