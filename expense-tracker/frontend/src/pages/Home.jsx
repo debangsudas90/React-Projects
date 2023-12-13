@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 //components
 import Dashboard from '../components/Dashboard';
@@ -14,8 +14,8 @@ import AddCardRoundedIcon from '@mui/icons-material/AddCardRounded';
 import CreditCardOffRoundedIcon from '@mui/icons-material/CreditCardOffRounded';
 
 const Home = () => {
-  const [activeComponent, setActiveComponent] = useState(null);
-
+  const [activeComponent, setActiveComponent] = useState(1);
+  
   const renderComponent = (componentNumber) => {
     switch (componentNumber) {
       case 1:
@@ -27,7 +27,7 @@ const Home = () => {
       case 4:
         return <Expenses />;
       default:
-        return null;
+        return <Dashboard/>;
     }
   };
 
