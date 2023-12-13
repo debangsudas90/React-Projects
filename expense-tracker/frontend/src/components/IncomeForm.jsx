@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 import { useIncomesContext } from '../hooks/useIncomesContext'
 
-const IncomeForm = ({ setForceRefresh }) => {
+const IncomeForm = () => {
 
     const { dispatch } = useIncomesContext()
     const [title, setTitle] = useState('')

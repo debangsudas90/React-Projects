@@ -7,7 +7,7 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 
 import { useIncomesContext } from '../hooks/useIncomesContext'
 
-const IncomeDetails = ({ income, setForceRefresh } ) => {
+const IncomeDetails = ({ income } ) => {
 
   const { dispatch } = useIncomesContext()
   const handleClick = async() => {

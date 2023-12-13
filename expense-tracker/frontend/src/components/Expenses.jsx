@@ -8,7 +8,6 @@ const Expenses = () => {
 
   const { expenses, dispatch } = useExpensesContext()
   const [totalExpense, setTotalExpense] = useState(0)
-  const [forceRefresh, setForceRefresh] = useState(true);
   
   useEffect(() => {
 
@@ -24,16 +23,6 @@ const Expenses = () => {
     fetchExpenses()
     
   }, [])
-  
-
-  // useEffect(() => {
-  //   // Fetch data when forceRefresh is true
-  //   if (forceRefresh) {
-  //     fetchExpenses();
-  //     // Reset forceRefresh to prevent infinite loop
-  //     setForceRefresh(false);
-  //   }
-  // }, [forceRefresh]);u
   
   //total expense
   useEffect(() => {

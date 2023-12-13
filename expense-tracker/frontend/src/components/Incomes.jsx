@@ -9,16 +9,6 @@ const Incomes = () => {
 
   const { incomes, dispatch } = useIncomesContext()
   const [totalIncome, setTotalIncome] = useState(0)
-  const [forceRefresh, setForceRefresh] = useState(true);
-
-  // const fetchIncomes = async() => {
-  //   const response = await fetch("http://localhost:4000/api/transac/getIncomes")
-  //   const json = await response.json()
-
-  //   if(response.ok) {
-  //     setIncomes(json)
-  //   }
-  // }
 
   useEffect(() => {
     
@@ -34,17 +24,7 @@ const Incomes = () => {
     fetchIncomes()
 
   }, [])
-  
 
-  // useEffect(() => {
-  //   // Fetch data when forceRefresh is true
-  //   if (forceRefresh) {
-  //     fetchIncomes();
-  //     // Reset forceRefresh to prevent infinite loop
-  //     setForceRefresh(false);
-  //   }
-  // }, [forceRefresh]);
-  
   //total income
   useEffect(() => {
     if (incomes) {
